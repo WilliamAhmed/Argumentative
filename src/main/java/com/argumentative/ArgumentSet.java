@@ -14,7 +14,7 @@ public class ArgumentSet {
     return arguments.stream()
         .filter(argument -> argument.hasKey(key))
         .findFirst()
-        .map(Argument::getValue)
+        .map(Argument::value)
         .orElseThrow();
   }
 }

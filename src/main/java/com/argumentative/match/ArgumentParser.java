@@ -28,11 +28,6 @@ public class ArgumentParser {
     return this;
   }
 
-  public ArgumentParser withMatcher(String shortCode, String longCode) {
-    argumentMatchers.add(new ArgumentMatcher(shortCode, longCode));
-    return this;
-  }
-
   public ArgumentSet parse(String[] args) throws InvalidArgumentException {
     Set<Argument> arguments = new HashSet<>();
 
@@ -45,7 +40,7 @@ public class ArgumentParser {
       ArgumentMatcher associatedMatcher = getArgumentMatcher(key)
           .orElseThrow(() -> new InvalidArgumentException(String.format("Argument key %s was not found", key)));
 
-      arguments.add(new Argument(associatedMatcher.getShortKey(), associatedMatcher.getLongKey(), args[i+1]));
+      arguments.add(new Argument(associatedMatcher.shortKey(), associatedMatcher.longKey(), args[i+1]));
     }
 
     return new ArgumentSet(arguments);
