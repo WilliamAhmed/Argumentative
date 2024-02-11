@@ -12,17 +12,6 @@ public class ArgumentParser {
 
   private final Set<ArgumentMatcher> argumentMatchers = new HashSet<>();
 
-  private static ArgumentParser instance;
-
-  private ArgumentParser() {}
-
-  public static ArgumentParser get() {
-    if (instance == null) {
-      instance = new ArgumentParser();
-    }
-    return instance;
-  }
-
   public ArgumentParser withMatcher(String shortCode, String longCode, String description) {
     argumentMatchers.add(new ArgumentMatcher(shortCode, longCode, description));
     return this;
